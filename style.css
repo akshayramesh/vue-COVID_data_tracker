@@ -1,0 +1,17 @@
+body {
+    padding-top: 3rem;
+}
+
+.title {
+    font-size: 20px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-weight: bold;
+}
+
+#updatedDate {
+    float: right;
+    font-weight: 400;
+    font-size: 20px;
+    
+}
