@@ -2,9 +2,7 @@ Vue.component('dashboard', {
     template:
         `
             <div id="dashboardComponentID">
-            <div id="updatedDate">
-               Last updated: {{ updatedDate }}
-            </div>
+           
             <br>
             <div class="title"> Overview 
             <div class="row">
