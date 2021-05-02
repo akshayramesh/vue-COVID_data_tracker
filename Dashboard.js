@@ -2,7 +2,9 @@ Vue.component('dashboard', {
     template:
         `
             <div id="dashboardComponentID">
-           
+            <div id="updatedDate">
+              Last updated: {{ updatedDate }}
+           </div>
             <br>
             <div class="title"> Overview 
             <div class="row">
@@ -89,7 +91,7 @@ Vue.component('dashboard', {
         `,
     data: function () {
         return {
-            updatedDate: "25 April, 2020",
+            updatedDate: "",
             total: 6767,
             active: 6000,
             recovered: 700,
@@ -154,9 +156,15 @@ Vue.component('dashboard', {
             url: "https://covid19.mathdro.id/api",
             type: "GET",
             success: function (data) {
-                that.total = data.confirmed.value;
-                that.recovered = data.recovered.value
-                that.death = data.deaths.value
+                that.total = data.confirmed.value.toLocaleString();
+                that.recovered = data.recovered.value.toLocaleString()
+                that.death = data.deaths.value.toLocaleString()
+                that.updatedDate = new Date(data.lastUpdate).toLocaleDateString('IN')
+              //  console.log(that.updatedDate, typeof (that.updatedDate));
+                let dateValue = new Date(that.updatedDate)
+               
+                console.log( dateValue);
+                console.log(dateValue.toLocaleDateString('IN'))
             },
             error: function (error) {
                 console.log(error);
@@ -232,9 +240,9 @@ Vue.component('dashboard', {
                 url: url,
                 type: "GET",
                 success: function (data) {
-                    that.countryConfirmed = data.confirmed.value
-                    that.countryRecovered = data.recovered.value
-                    that.countryDeaths = data.deaths.value
+                    that.countryConfirmed = data.confirmed.value.toLocaleString()
+                    that.countryRecovered = data.recovered.value.toLocaleString()
+                    that.countryDeaths = data.deaths.value.toLocaleString()
                 },
                 error: function (error) {
                     console.log(error);
